@@ -100,6 +100,11 @@ public class Principal extends javax.swing.JFrame {
         cmdBorrar.setFont(new java.awt.Font("MS Reference Sans Serif", 0, 14)); // NOI18N
         cmdBorrar.setForeground(new java.awt.Color(102, 0, 0));
         cmdBorrar.setText("Borrar");
+        cmdBorrar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cmdBorrarActionPerformed(evt);
+            }
+        });
         getContentPane().add(cmdBorrar, new org.netbeans.lib.awtextra.AbsoluteConstraints(690, 200, -1, -1));
 
         setSize(new java.awt.Dimension(801, 269));
@@ -149,6 +154,16 @@ public class Principal extends javax.swing.JFrame {
          txtIma2.setText(""+c3.getImaginario());
      }
     }//GEN-LAST:event_cmdCalcularActionPerformed
+
+    private void cmdBorrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cmdBorrarActionPerformed
+        txtIma.setText("");
+        txtIma1.setText("");
+        txtIma2.setText("");
+        txtReal.setText("");
+        txtReal1.setText("");
+        txtReal2.setText("");
+        txtReal.requestFocusInWindow();
+    }//GEN-LAST:event_cmdBorrarActionPerformed
 
     /**
      * @param args the command line arguments
