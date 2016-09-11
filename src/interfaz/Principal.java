@@ -54,9 +54,19 @@ public class Principal extends javax.swing.JFrame {
         getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 20, -1, -1));
 
         txtReal.setFont(new java.awt.Font("MS Reference Sans Serif", 0, 14)); // NOI18N
+        txtReal.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                txtRealKeyTyped(evt);
+            }
+        });
         getContentPane().add(txtReal, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 90, 60, 30));
 
         txtIma.setFont(new java.awt.Font("MS Reference Sans Serif", 0, 14)); // NOI18N
+        txtIma.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                txtImaKeyTyped(evt);
+            }
+        });
         getContentPane().add(txtIma, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 90, 60, 30));
 
         jLabel2.setFont(new java.awt.Font("Segoe Script", 0, 24)); // NOI18N
@@ -64,19 +74,41 @@ public class Principal extends javax.swing.JFrame {
         getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 90, -1, -1));
 
         txtReal1.setFont(new java.awt.Font("MS Reference Sans Serif", 0, 14)); // NOI18N
+        txtReal1.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                txtReal1KeyTyped(evt);
+            }
+        });
         getContentPane().add(txtReal1, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 90, 60, 30));
 
         txtIma1.setFont(new java.awt.Font("MS Reference Sans Serif", 0, 14)); // NOI18N
+        txtIma1.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                txtIma1KeyTyped(evt);
+            }
+        });
         getContentPane().add(txtIma1, new org.netbeans.lib.awtextra.AbsoluteConstraints(430, 90, 60, 30));
 
         jLabel3.setFont(new java.awt.Font("Segoe Script", 0, 24)); // NOI18N
         jLabel3.setText("i");
         getContentPane().add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(490, 90, -1, -1));
 
+        txtReal2.setEditable(false);
         txtReal2.setFont(new java.awt.Font("MS Reference Sans Serif", 0, 14)); // NOI18N
+        txtReal2.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                txtReal2KeyTyped(evt);
+            }
+        });
         getContentPane().add(txtReal2, new org.netbeans.lib.awtextra.AbsoluteConstraints(600, 90, 60, 30));
 
+        txtIma2.setEditable(false);
         txtIma2.setFont(new java.awt.Font("MS Reference Sans Serif", 0, 14)); // NOI18N
+        txtIma2.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                txtIma2KeyTyped(evt);
+            }
+        });
         getContentPane().add(txtIma2, new org.netbeans.lib.awtextra.AbsoluteConstraints(670, 90, 60, 30));
 
         jLabel4.setFont(new java.awt.Font("Segoe Script", 0, 24)); // NOI18N
@@ -127,11 +159,13 @@ public class Principal extends javax.swing.JFrame {
          JOptionPane.showMessageDialog(this,"Digite la parte imaginaria n°2","Error",JOptionPane.ERROR_MESSAGE);
          txtIma1.requestFocusInWindow();
      }else{
+         try{
          op = cmbOperaciones.getSelectedIndex();
          r1=Integer.parseInt(txtReal.getText());
          r2=Integer.parseInt(txtReal1.getText());
          i1=Integer.parseInt(txtIma.getText());
          i2=Integer.parseInt(txtIma1.getText());
+        
          c1= new Complejos (r1,i1);
          c2= new Complejos (r2,i2);
          
@@ -152,6 +186,10 @@ public class Principal extends javax.swing.JFrame {
         }
          txtReal2.setText(""+c3.getReal());
          txtIma2.setText(""+c3.getImaginario());
+     }catch (Exception e){
+               JOptionPane.showMessageDialog(this,"Ingrese numero validos","Erro", JOptionPane.ERROR_MESSAGE);
+            txtReal.requestFocusInWindow();
+     }
      }
     }//GEN-LAST:event_cmdCalcularActionPerformed
 
@@ -164,6 +202,72 @@ public class Principal extends javax.swing.JFrame {
         txtReal2.setText("");
         txtReal.requestFocusInWindow();
     }//GEN-LAST:event_cmdBorrarActionPerformed
+
+    private void txtRealKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtRealKeyTyped
+        char c=evt.getKeyChar();
+             
+         
+          if(!Character.isDigit(evt.getKeyChar()) &&evt.getKeyChar()!='-'){ 
+              getToolkit().beep(); 
+               
+              evt.consume(); 
+          }
+    }//GEN-LAST:event_txtRealKeyTyped
+
+    private void txtImaKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtImaKeyTyped
+        char c=evt.getKeyChar();
+             
+         
+          if(!Character.isDigit(evt.getKeyChar()) &&evt.getKeyChar()!='-'){ 
+              getToolkit().beep(); 
+               
+              evt.consume(); 
+          }
+    }//GEN-LAST:event_txtImaKeyTyped
+
+    private void txtReal1KeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtReal1KeyTyped
+       char c=evt.getKeyChar();
+             
+         
+          if(!Character.isDigit(evt.getKeyChar()) &&evt.getKeyChar()!='-'){ 
+              getToolkit().beep(); 
+               
+              evt.consume(); 
+          }
+    }//GEN-LAST:event_txtReal1KeyTyped
+
+    private void txtIma1KeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtIma1KeyTyped
+       char c=evt.getKeyChar();
+             
+         
+          if(!Character.isDigit(evt.getKeyChar()) &&evt.getKeyChar()!='-'){ 
+              getToolkit().beep(); 
+               
+              evt.consume(); 
+          }
+    }//GEN-LAST:event_txtIma1KeyTyped
+
+    private void txtReal2KeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtReal2KeyTyped
+        char c=evt.getKeyChar();
+             
+         
+          if(!Character.isDigit(evt.getKeyChar()) &&evt.getKeyChar()!='-'){ 
+              getToolkit().beep(); 
+               
+              evt.consume(); 
+          }
+    }//GEN-LAST:event_txtReal2KeyTyped
+
+    private void txtIma2KeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtIma2KeyTyped
+       char c=evt.getKeyChar();
+             
+         
+          if(!Character.isDigit(evt.getKeyChar()) &&evt.getKeyChar()!='-'){ 
+              getToolkit().beep(); 
+               
+              evt.consume(); 
+          }
+    }//GEN-LAST:event_txtIma2KeyTyped
 
     /**
      * @param args the command line arguments
