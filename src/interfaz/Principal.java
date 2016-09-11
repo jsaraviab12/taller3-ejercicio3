@@ -4,7 +4,8 @@
  * and open the template in the editor.
  */
 package interfaz;
-
+import clases.Complejos;
+import javax.swing.JOptionPane;
 /**
  *
  * @author Jesus
@@ -38,7 +39,7 @@ public class Principal extends javax.swing.JFrame {
         txtReal2 = new javax.swing.JTextField();
         txtIma2 = new javax.swing.JTextField();
         jLabel4 = new javax.swing.JLabel();
-        jComboBox1 = new javax.swing.JComboBox<>();
+        cmbOperaciones = new javax.swing.JComboBox<>();
         cmdCalcular = new javax.swing.JButton();
         cmdBorrar = new javax.swing.JButton();
 
@@ -82,13 +83,18 @@ public class Principal extends javax.swing.JFrame {
         jLabel4.setText("i");
         getContentPane().add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(730, 90, -1, -1));
 
-        jComboBox1.setFont(new java.awt.Font("MS Reference Sans Serif", 0, 14)); // NOI18N
-        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "+", "-", "x", "/" }));
-        getContentPane().add(jComboBox1, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 94, 50, 30));
+        cmbOperaciones.setFont(new java.awt.Font("MS Reference Sans Serif", 0, 14)); // NOI18N
+        cmbOperaciones.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "+", "-", "x", "/" }));
+        getContentPane().add(cmbOperaciones, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 94, 50, 30));
 
         cmdCalcular.setFont(new java.awt.Font("MS Reference Sans Serif", 0, 14)); // NOI18N
         cmdCalcular.setForeground(new java.awt.Color(0, 102, 51));
         cmdCalcular.setText("Calcular");
+        cmdCalcular.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cmdCalcularActionPerformed(evt);
+            }
+        });
         getContentPane().add(cmdCalcular, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 170, -1, -1));
 
         cmdBorrar.setFont(new java.awt.Font("MS Reference Sans Serif", 0, 14)); // NOI18N
@@ -99,6 +105,50 @@ public class Principal extends javax.swing.JFrame {
         setSize(new java.awt.Dimension(801, 269));
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
+
+    private void cmdCalcularActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cmdCalcularActionPerformed
+        int r1, r2, i1,i2,op;
+        Complejos c1,c2,c3=null;
+        if (txtReal.getText().trim().isEmpty()){
+         JOptionPane.showMessageDialog(this,"Digite la parte real n°1","Error",JOptionPane.ERROR_MESSAGE);
+         txtReal.requestFocusInWindow();
+     }else if(txtIma.getText().trim().isEmpty()){
+         JOptionPane.showMessageDialog(this,"Digite la parte imaginaria n°1" ,"Error",JOptionPane.ERROR_MESSAGE);
+         txtIma.requestFocusInWindow();
+     }else if(txtReal1.getText().trim().isEmpty()){
+         JOptionPane.showMessageDialog(this, "Digite la parte real n°2","Error",JOptionPane.ERROR_MESSAGE);
+         txtReal1.requestFocusInWindow();
+     }else if(txtIma1.getText().trim().isEmpty()){
+         JOptionPane.showMessageDialog(this,"Digite la parte imaginaria n°2","Error",JOptionPane.ERROR_MESSAGE);
+         txtIma1.requestFocusInWindow();
+     }else{
+         op = cmbOperaciones.getSelectedIndex();
+         r1=Integer.parseInt(txtReal.getText());
+         r2=Integer.parseInt(txtReal1.getText());
+         i1=Integer.parseInt(txtIma.getText());
+         i2=Integer.parseInt(txtIma1.getText());
+         c1= new Complejos (r1,i1);
+         c2= new Complejos (r2,i2);
+         
+         switch (op) {
+            case 0:
+                c3=c1.sumar(c2);
+                break;
+            case 1:
+                c3 = c1.restar(c2);
+                break;
+            case 2:
+                c3=c1.Multiplicar(c2);
+                break;
+            case 3:
+                c3 = c1.dividir(c2);
+                break;
+                
+        }
+         txtReal2.setText(""+c3.getReal());
+         txtIma2.setText(""+c3.getImaginario());
+     }
+    }//GEN-LAST:event_cmdCalcularActionPerformed
 
     /**
      * @param args the command line arguments
@@ -136,9 +186,9 @@ public class Principal extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JComboBox<String> cmbOperaciones;
     private javax.swing.JButton cmdBorrar;
     private javax.swing.JButton cmdCalcular;
-    private javax.swing.JComboBox<String> jComboBox1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;

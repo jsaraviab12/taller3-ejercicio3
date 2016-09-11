@@ -60,30 +60,10 @@ public class Complejos {
         ri1=this.real*c2.imaginario;
         ri2=this.imaginario*c2.real;
         i2=this.imaginario*c2.imaginario;
-        if(r1>0 && i2>0){
-         real=r1+i2;   
-        }else if(r1>0 && i2<0){
-         real=r1-i2;   
-        }else if(r1<0 && i2>0){
-            real= i2-r1;
-        }else if(r1<0 && i2<0){
-            real=r1-i2;
-        }
-        else{
-            real=0;
-        }
-        if(ri1>0 && ri2>0){
-         imaginario=ri1+ri2;   
-        }else if(ri1>0 && ri2<0){
-         imaginario=ri1-ri2;   
-        }else if(ri1<0 && ri2>0){
-            imaginario= ri2-ri1;
-        }else if(ri1<0 && ri2<0){
-            imaginario=ri1-ri2;
-        }
-        else{
-            imaginario=0;
-        }
+        
+            real=(r1)+(+i2);   
+            imaginario=(ri1)+(ri2);
+        
         
         c=new Complejos(real,imaginario);
         return c;     
