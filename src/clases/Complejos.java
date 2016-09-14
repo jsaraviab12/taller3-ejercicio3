@@ -37,8 +37,8 @@ public class Complejos {
     public Complejos sumar(Complejos c2){
         int r1,cp1;
         Complejos c; 
-        r1=(this.real+c2.real);
-        cp1=this.imaginario+c2.imaginario;
+        r1=(this.getReal()+c2.getReal ());
+        cp1=this.getImaginario()+c2.getImaginario();
         
         c=new Complejos(r1,cp1);
         return c;
@@ -47,8 +47,8 @@ public class Complejos {
     public Complejos restar(Complejos c2){
       int r1,cp1;
         Complejos c; 
-        r1=(this.real-c2.real);
-        cp1=this.imaginario-c2.imaginario;
+        r1=(this.getReal()-c2.getReal());
+        cp1=this.getImaginario()-c2.getImaginario();
         
         c=new Complejos(r1,cp1);
         return c;   
@@ -56,10 +56,10 @@ public class Complejos {
     public Complejos Multiplicar(Complejos c2){
      int r1,ri1,i2,ri2,real,imaginario;
         Complejos c; 
-        r1=this.real*c2.real;
-        ri1=this.real*c2.imaginario;
-        ri2=this.imaginario*c2.real;
-        i2=this.imaginario*c2.imaginario;
+        r1=this.getReal()*c2.getReal();
+        ri1=this.getReal()*c2.getImaginario();
+        ri2=this.getImaginario()*c2.getReal();
+        i2=this.getImaginario()*c2.getImaginario();
         
             real=(r1)+(+i2);   
             imaginario=(ri1)+(ri2);
@@ -71,15 +71,13 @@ public class Complejos {
     public Complejos dividir(Complejos c2){
     int    numeradorr,denominador,real,imaginario,r1,ri1,ir1,i1,r2,i2,numeradori;
     Complejos c;
-    r1=(this.real*c2.real);
-    ri1=(this.real*c2.imaginario);
-    ir1=(this.imaginario*c2.real);
-    i1=(this.imaginario*c2.imaginario);
-    r2=(c2.real*c2.real);
-    i2=(c2.imaginario*c2.imaginario);
-    
-    
-    
+    r1=(this.getReal()*c2.getReal());
+    ri1=(this.getReal()*c2.getImaginario());
+    ir1=(this.getImaginario()*c2.getReal());
+    i1=(this.getImaginario()*c2.getImaginario());
+    r2=(c2.getReal()*c2.getReal());
+    i2=(c2.getImaginario()*c2.getImaginario());
+   
     numeradorr= (r1+i1);
           numeradori=  (ri1+ir1);
           denominador=(i2+r2);
